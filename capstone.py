@@ -21,6 +21,7 @@ hr_df['department_number'] = hr_df['department'].apply(lambda x: department_conv
 salary_conversion = {'low': 0, 'medium': 1, 'high': 2}
 hr_df['salary_number'] = hr_df['salary'].apply(lambda x: salary_conversion[x])
 left_df = hr_df[hr_df['left']==1]
+stay_df = hr_df[hr_df['left']==0]
     
 
 # ----Re-used Helper Functions----
@@ -150,6 +151,7 @@ def data_vis2(hr_df, left_df):
     plt.subplot(1, 3, 1)
     evaluation_average = np.mean(hr_df['last_evaluation'])
     plt.axvline(x=evaluation_average, label='Average', color='red')
+    plt.legend()
     plt.subplot(1, 3, 2)
     plt.xticks(range(2), ('No', 'Yes'))
     plt.xlabel('Promotion in the Last 5 Years')
@@ -160,13 +162,18 @@ def data_vis2(hr_df, left_df):
     plt.show()
     
 
-def data_vis3(left_df):
+def data_vis3(stay_df, left_df):
     x = [
         'number_project', 'average_monthly_hours',
         'time_spend_company', 'last_evaluation']
     y = ['satisfaction_level', 'last_evaluation']
     plot_set_vs_set(left_df, x, y, 'Left')
     
+    x = [
+        'number_project', 'average_monthly_hours',
+        'time_spend_company', 'last_evaluation']
+    y = ['satisfaction_level', 'last_evaluation']
+    plot_set_vs_set(stay_df, x, y, 'Stay')
     #histogram_set(left_df, ['satisfaction_level'], 'Employees That Left')
     
     
@@ -185,7 +192,7 @@ def main():
     data_vis2(hr_df, left_df)
     
     # Plot scatter plots to find meaningful correlations
-    data_vis3(left_df)
+    data_vis3(stay_df, left_df)
     
     # Is it categorical?
     #histogram_set(left_df, ['department', 'work_accident', 'number_project'], 'left')
