@@ -169,12 +169,13 @@ def data_vis3(stay_df, left_df):
     y = ['satisfaction_level', 'last_evaluation']
     plot_set_vs_set(left_df, x, y, 'Left')
     
+    
+def data_vis4(stay_df, left_df):
     x = [
         'number_project', 'average_monthly_hours',
         'time_spend_company', 'last_evaluation']
     y = ['satisfaction_level', 'last_evaluation']
     plot_set_vs_set(stay_df, x, y, 'Stay')
-    #histogram_set(left_df, ['satisfaction_level'], 'Employees That Left')
     
     
 def main():
@@ -194,9 +195,9 @@ def main():
     # Plot scatter plots to find meaningful correlations
     data_vis3(stay_df, left_df)
     
-    # Is it categorical?
-    #histogram_set(left_df, ['department', 'work_accident', 'number_project'], 'left')
-
+    # Plot scatter plots to find meaningful correlations
+    data_vis4(stay_df, left_df)
+    
 
 if __name__ == "__main__":
     main()
