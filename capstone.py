@@ -179,19 +179,21 @@ def data_vis4(stay_df, left_df):
     
     
 def main():
-    # For reference
+    # ----For reference----
+    
     ['satisfaction_level', 'last_evaluation', 'number_project',
      'average_monthly_hours', 'time_spend_company', 'work_accident',
      'left', 'promotion_last_5years', 'department', 'salary']
     
-    # ----Get an overview of turnover rate----
+    # ----Are many employees actually leaving?----
     # Percentage that left vs. stayed
     data_vis1(hr_df, left_df)
     
-    
+    # ----What type of people are leaving?----
     # Draw histograms to find leaver correlations with other factors
     data_vis2(hr_df, left_df)
     
+    # ----Correlate data rangers to leavers and non-leavers----
     # Plot scatter plots to find meaningful correlations
     data_vis3(stay_df, left_df)
     
